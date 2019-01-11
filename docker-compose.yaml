@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   influxdb:
-    image: influxdb:1.6-data
+    image: influxdb:latest
     container_name: influxdb
     ports:
       - "8083:8083"
@@ -20,5 +20,18 @@ services:
 
   linky:
     build: docker/linky/
+    container_name: linky
     stdin_open: true
     tty: true
+
+  grafana:
+    build: docker/grafana/
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    links:
+      - influxdb
+    volumes:
+    # Data persistency
+    # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
+      - "./data/grafana:/var/lib/grafana"
