@@ -63,7 +63,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     pp = pprint.PrettyPrinter(indent=4)
-    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
 
     params = _openParams(PFILE)
 
@@ -141,4 +141,3 @@ if __name__ == "__main__":
         logging.info("unable to write data points to influxdb")
     else:
         logging.info("done")
-
