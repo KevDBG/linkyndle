@@ -5,9 +5,10 @@ services:
     image: influxdb:latest
     container_name: influxdb
     ports:
-      - "8083:8083"
-      - "8086:8086"
-      - "8090:8090"
+      # Please decomment if you want to expose ports to the host
+      #- "8083:8083"
+      #- "8086:8086"
+      #- "8090:8090"
     environment:
       INFLUXDB_DB: "linky"
       INFLUXDB_HTTP_AUTH_ENABLED: "false"
